@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavBar from "./components/NavBar.jsx";
+import Home from "./components/Home.jsx";
+import Adventures from "./components/Adventures.jsx";
+import AdventureDetails from "./components/AdventureDetails.jsx";
+import Bookings from "./components/Bookings.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import New from "./components/New.jsx";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/adventures/:id" element={<Adventures />} />
+        {/* down here id = adventure id */}
+        <Route path="/adventures/details/:id" element={<AdventureDetails />} />
+        <Route path="/bookings" element={<Bookings />} />
+      </Routes>
+    </Router>
   );
 }
 
